@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\UserFavourite;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,13 +16,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(UserFavourite::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'username' => $faker->userName,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => Hash::make('123456'),
-        'remember_token' => Str::random(10),
+        'video_id' => $faker->randomNumber(1),
+        'user_id' => $faker->randomNumber(1)
     ];
 });
