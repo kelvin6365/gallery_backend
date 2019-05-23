@@ -6,7 +6,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 type Query @group(middleware: ["auth:api"]){
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
-    user(id: ID @eq): User @find(model: "App\\User") 
+    user(username:String!@eq): User @find(model: "App\\User") 
     allUsers: [User!]! @all
     allUserFavouritesList: [UserFavourite!]! @all
     userFavouriteList(id: ID @eq): UserFavourite @find(model: "App\\UserFavourite") 
