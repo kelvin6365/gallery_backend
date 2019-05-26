@@ -18,6 +18,7 @@ type Mutation {
         username:String  @rules(apply: ["required","unique:users,username"])
         password:String @bcrypt @rules(apply: ["required"])
         email:String  @rules(apply: ["required","email","unique:users,email"])
+        user_type:String  @rules(apply: ["required"])
     ): User @create(model:"App\\User")
 }
 
@@ -26,6 +27,7 @@ type User {
     name: String!
     username: String!
     email: String!
+    user_type: String!
     UserFavourites: [UserFavourite!]! @hasMany(relation:"UserFavourite" )
     password: String @bcrypt
     created_at: DateTime!

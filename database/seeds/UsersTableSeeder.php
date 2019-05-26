@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\UserFavourite;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,6 +17,7 @@ class UsersTableSeeder extends Seeder
         //
         factory(App\User::class, 10)->create()->each(function ($user) {
             $user->userFavourite()->save(factory(UserFavourite::class)->make());
+         
         });
     }
 }
