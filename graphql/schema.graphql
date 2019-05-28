@@ -35,7 +35,7 @@ type User {
 }
 
 type UserFavourite {
-    id: ID!
+    id: ID! @field(resolver: "App\\GraphQL\\Queries\\UserFavourite@resolve")
     video_id: Int!
     user_id: Int!
     ownedBy: User @belongsTo(relation:"User")
