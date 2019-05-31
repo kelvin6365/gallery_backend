@@ -6,6 +6,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 type Query @group(middleware: ["auth:api"]){
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
+    videos: [Video!]! @paginate(type: "paginator" model: "App\\Video")
     user(username:String!@eq): User @find(model: "App\\User") 
     allUsers: [User!]! @all
     allUserFavouritesList: [UserFavourite!]! @all
@@ -28,16 +29,35 @@ type User {
     username: String!
     email: String!
     user_type: String!
-    UserFavourites: [UserFavourite!]! @hasMany(relation:"UserFavourite" )
+    UserFavourites: [UserFavourite!]! @hasMany(relation:"UserFavourite" ,type: "paginator")
     password: String @bcrypt
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Video {
+    video_id:ID!,
+    embedded_url:String!,
+    isAvgle:Int!,
+    hd:Int!,
+    preview_url:String!,
+    preview_video_url:String!,
+    title:String!,
+    video_url:String!,
+    duration:Int!,
+    viewnumber:String!,
+    keyword:String!,
+    like:Int!,
+    dislike:Int!,
+    created_at:DateTime!,
+    updated_at:DateTime!,
 }
 
 type UserFavourite {
     id: ID! @field(resolver: "App\\GraphQL\\Queries\\UserFavourite@resolve")
     video_id: Int!
     user_id: Int!
-    ownedBy: User @belongsTo(relation:"User")
+    video: Video @hasOne
+    ownedBy: User @belongsTo(relation:"User") 
     created_at: DateTime!
 }

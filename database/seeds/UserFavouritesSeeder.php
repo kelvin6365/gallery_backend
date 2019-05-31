@@ -12,5 +12,6 @@ class UserFavouritesSeeder extends Seeder
     public function run()
     {
         //
+        
     }
 }

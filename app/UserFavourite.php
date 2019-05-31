@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Video;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -20,7 +21,11 @@ class UserFavourite extends Authenticatable
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"id","user_id");
+    }
+
+    public function video() {
+        return $this->belongsTo(Video::class, 'video_id','video_id');
     }
 
 }
