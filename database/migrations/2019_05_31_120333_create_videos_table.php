@@ -14,7 +14,7 @@ class CreateVideosTable extends Migration
     public function up()
     {
         Schema::create('videos', function (Blueprint $table) {
-            $table->bigIncrements('video_id');
+            $table->bigIncrements('id');
             $table->string('embedded_url');
             $table->boolean('isAvgle');
             $table->boolean('hd');
@@ -22,11 +22,11 @@ class CreateVideosTable extends Migration
             $table->string('preview_video_url');
             $table->string('title');
             $table->string('video_url');
-            $table->string('duration');
-            $table->bigInteger('viewnumber');
+            $table->float('duration');
+            $table->bigInteger('viewnumber')->default(0);
             $table->string('keyword');
-            $table->bigInteger('like');
-            $table->bigInteger('dislike');
+            $table->bigInteger('like')->default(0);
+            $table->bigInteger('dislike')->default(0);
             $table->timestamps();
         });
     }

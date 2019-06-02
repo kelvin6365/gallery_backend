@@ -21,6 +21,27 @@ type Mutation {
         email:String  @rules(apply: ["required","email","unique:users,email"])
         user_type:String  @rules(apply: ["required"])
     ): User @create(model:"App\\User")
+
+    addVideoFromAvgle(
+        id:String @rules(apply: ["required","unique:videos,id"])
+        embedded_url:String @rules(apply: ["required"])
+        isAvgle:Int @rules(apply: ["required"])
+        hd:Int @rules(apply: ["required"])
+        preview_url:String @rules(apply: ["required"])
+        preview_video_url:String @rules(apply: ["required"])
+        title:String @rules(apply: ["required"])
+        video_url:String @rules(apply: ["required"])
+        duration:String @rules(apply: ["required"])
+        viewnumber:String 
+        keyword:String @rules(apply: ["required"])
+        like:Int 
+        dislike:Int 
+    ): Video @create(model:"App\\Video")
+
+    addToFavouriteList(
+        user_id:String!
+        video_id:String!
+    ): UserFavourite @create(model:"App\\UserFavourite")
 }
 
 type User {
@@ -35,8 +56,19 @@ type User {
     updated_at: DateTime!
 }
 
+input SortOption {
+  field: String
+  order: SortOrder
+}
+
+
+enum SortOrder {
+    ASC
+    DESC
+}
+
 type Video {
-    video_id:ID!,
+    id:ID!,
     embedded_url:String!,
     isAvgle:Int!,
     hd:Int!,
@@ -44,7 +76,7 @@ type Video {
     preview_video_url:String!,
     title:String!,
     video_url:String!,
-    duration:Int!,
+    duration:String!,
     viewnumber:String!,
     keyword:String!,
     like:Int!,

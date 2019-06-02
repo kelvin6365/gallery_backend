@@ -22,5 +22,6 @@ class UserFavourite
       
         return $UserFavouriteuniqid;
     }
+  
 
 }

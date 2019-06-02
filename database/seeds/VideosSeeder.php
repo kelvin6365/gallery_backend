@@ -13,7 +13,7 @@ class VideosSeeder extends Seeder
     {
         //
         DB::table('videos')->insert([
-            'video_id' => "288782",
+            'id' => "288782",
             'embedded_url' => "https://avgle.com/embed/7819dd9a0eb21b0e75a8",
             'isAvgle' => true,
             'hd' =>true,
@@ -24,8 +24,8 @@ class VideosSeeder extends Seeder
             'duration' => 8307.26,
             'viewnumber' => 41,
             'keyword' => "松ゆきの",
-            'like' => "2",
-            'dislike' => "41",
+            'like' => 2,
+            'dislike' => 41,
         ]);
         
     }

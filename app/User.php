@@ -44,6 +44,6 @@ class User extends Authenticatable
     }
 
     public function userFavourite() {
-        return $this->hasMany(UserFavourite::class, 'user_id');
+        return $this->hasMany(UserFavourite::class, 'user_id','id')->orderBy('created_at','DESC');
     }
 }

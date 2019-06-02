@@ -16,7 +16,7 @@ class Video extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'video_id',
+        'id',
         'embedded_url', 
         'isAvgle',
         'hd',
@@ -45,9 +45,25 @@ class Video extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 
-
+    public function create(array $data)
+    {
+        return Video::create([
+            'id'=> $data['id'],
+            'embedded_url'=> $data['embedded_url'], 
+            'isAvgle'=> $data['isAvgle'],
+            'hd'=> $data['hd'],
+            'preview_url'=> $data['preview_url'],
+            'preview_video_url'=> $data['preview_video_url'],
+            'title'=> $data['title'],
+            'video_url'=> $data['video_url'],
+            'duration'=> $data['username'],
+            'viewnumber'=> $data['viewnumber']??0,
+            'keyword'=> $data['title'],
+            'like'=> $data['like']??0,
+            'dislike'=> $data['userdislikename']??0,
+        ]);
+    }
    
 }

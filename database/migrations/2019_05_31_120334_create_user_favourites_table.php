@@ -17,7 +17,7 @@ class CreateUserFavouritesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('video_id')->unsigned();
             $table->foreign('video_id')
-                    ->references('video_id')->on('videos')
+                    ->references('id')->on('videos')
                     ->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
