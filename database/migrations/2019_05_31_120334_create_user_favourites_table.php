@@ -23,7 +23,7 @@ class CreateUserFavouritesTable extends Migration
             $table->foreign('user_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
-            
+            $table->unique(['video_id', 'user_id']);
             $table->timestamps();
         });
     }

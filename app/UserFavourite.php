@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use App\Video;
+use App\UserFavourite;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,6 +28,7 @@ class UserFavourite extends Authenticatable
     public function video() {
         return $this->belongsTo(Video::class);
     }
+
 
   
 }

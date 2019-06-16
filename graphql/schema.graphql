@@ -87,8 +87,8 @@ type Video {
 
 type UserFavourite {
     id: ID! @field(resolver: "App\\GraphQL\\Queries\\UserFavourite@resolve")
-    video_id: Int!
-    user_id: Int!
+    video_id: ID!
+    user_id: ID!
     video: Video @hasOne
     ownedBy: User @belongsTo(relation:"User") 
     created_at: DateTime!

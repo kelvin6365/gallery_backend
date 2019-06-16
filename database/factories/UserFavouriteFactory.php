@@ -19,6 +19,6 @@ use Faker\Generator as Faker;
 $factory->define(UserFavourite::class, function (Faker $faker) {
     return [
         'video_id' => "288782",
-        'user_id' => $faker->randomNumber(1)
+        'user_id' => $faker->unique()->randomNumber(1)
     ];
 });
